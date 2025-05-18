@@ -23,8 +23,8 @@
 1. **Клонируйте репозиторий**:
 
 ```bash
-git clone https://github.com/ram3es92/diplom-gb.git
-cd ecommerce-app
+git clone https://github.com/ram3es92/diplom_test.git
+cd diplom_test
 ```
 2. Запустите всё приложение:
 ```
@@ -48,22 +48,17 @@ docker compose up --build
 
     MongoDB админка (Mongo Express): http://localhost:8081
 
-    🔐 По умолчанию логин: admin, пароль: admin123
+    🔐 По умолчанию логин: admin, пароль: admin
     (можно изменить в .env и docker-compose.yml)
 
-## Основные команды
+## Заполняем базу данных товарами
 
 👉 Backend
 ```
 cd ecommerce-backend
 docker compose run --rm backend npm run seed    # наполнить базу товаров
 ```
-👉 Frontend (если без Docker)
-```
-cd ecommerce-frontend
-npm install
-npm run dev
-```
+
 
  Пример пользователей
 
