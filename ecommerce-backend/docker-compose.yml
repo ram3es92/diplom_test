@@ -1,0 +1,37 @@
+version: '3.8'
+services:
+  backend:
+    build: .
+    container_name: ecommerce-backend
+    env_file:
+      - .env
+    ports:
+      - '3001:3001'
+    depends_on:
+      - mongodb
+      - redis
+  mongodb:
+    image: mongo:6.0
+    container_name: ecommerce-mongo
+    restart: unless-stopped
+    volumes:
+      - mongo-data:/data/db
+  redis:
+    image: redis:7-alpine
+    container_name: ecommerce-redis
+    restart: unless-stopped
+    command: ["redis-server", "--save", "", "--appendonly", "no"]
+  mongo-express:
+    image: mongo-express:1.0.2            
+    restart: unless-stopped
+    ports:
+      - "8081:8081"                       
+    environment:
+      ME_CONFIG_MONGODB_URL: mongodb://mongodb:27017/demo
+      ME_CONFIG_BASICAUTH: "true"
+      ME_CONFIG_BASICAUTH_USERNAME: admin
+      ME_CONFIG_BASICAUTH_PASSWORD: admin123
+    depends_on:
+      - mongodb
+volumes:
+  mongo-data:
