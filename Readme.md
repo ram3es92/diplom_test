@@ -30,6 +30,11 @@ cd diplom_test
 ```
 docker compose up --build
 ```
+3. Заполните базу данных товарами
+   3.1 Откройте терминал (второе окно)
+   3.2 cd ecommerce-backend         #зайдите в папку с исходным кодом серверной части
+   3.3 docker compose run --rm backend npm run seed    # наполните базу товаров командой
+
 Будут запущены:
 
     frontend на http://localhost:5173
